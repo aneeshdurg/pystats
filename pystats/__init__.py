@@ -37,3 +37,7 @@ def max():
 @cli.command
 def min():
     print(np.min(get_data_from_stream()))
+
+@cli.command
+def sum():
+    print(np.sum(get_data_from_stream()))
