@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pystats"
+version = "0.0.1"
+authors = [
+  { name="Aneesh Durg", email="aneeshdurg17@gmail.com" },
+]
+description = ""
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [ ]
+dependencies = [
+  "matplotlib",
+  "numpy",
+  "click"
+]
+
+
+[project.scripts]
+pystats = "pystats:cli"
+
+[project.urls]
+"Homepage" = "https://github.com/aneeshdurg/pystats"
+"Bug Tracker" = "https://github.com/aneeshdurg/pystats/issues"
+
+
+[tool.pyright]
+exclude = ["**/__pycache__"]
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
+
+[tool.isort]
+profile = "black"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pystats/"]
