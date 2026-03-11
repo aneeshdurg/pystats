@@ -3,9 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import click
 
+
 @click.group()
 def cli():
     pass
+
 
 def get_data_from_stream():
     data = []
@@ -17,26 +19,41 @@ def get_data_from_stream():
             break
     return np.array(data)
 
+
 @cli.command
 def histogram():
-    plt.stairs(*np.histogram(np.array(get_data_from_stream())))
+    hgram = np.histogram(np.array(get_data_from_stream()))
+    print(hgram)
+    plt.stairs(*hgram)
     plt.show()
+
+
+@cli.command
+def plot():
+    data = get_data_from_stream()
+    plt.plot(np.arange(len(data)), data)
+    plt.show()
+
 
 @cli.command
 def avg():
     print(np.mean(get_data_from_stream()))
 
+
 @cli.command
 def std():
     print(np.std(get_data_from_stream()))
+
 
 @cli.command
 def max():
     print(np.max(get_data_from_stream()))
 
+
 @cli.command
 def min():
     print(np.min(get_data_from_stream()))
+
 
 @cli.command
 def sum():
